@@ -90,11 +90,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -109,26 +109,6 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
 alias ninc="nvm install node --reinstall-packages-from=node"
-
-# Created by `pipx` on 2023-12-09 23:21:42
-export PATH="$PATH:/Users/usman/Library/Python/3.12/bin"
-
-# Created by `pipx` on 2023-12-09 23:21:43
-export PATH="$PATH:/Users/usman/.local/bin"
-
-autoload -U bashcompinit
-bashcompinit
-eval "$(register-python-argcomplete pipx)"
-
-PATH=~/.console-ninja/.bin:/Library/PostgreSQL/16/bin/:$PATH
-
-# pnpm
-export PNPM_HOME="/Users/usman/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

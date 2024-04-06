@@ -1,0 +1,53 @@
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
+if [ -f "$HOME/.env" ]; then
+  unamestr=$(uname)
+  if [ "$unamestr" = "Linux" ]; then
+    export $(grep -v '^#' $HOME/.env | xargs -d '\n')
+  elif [ "$unamestr" = "FreeBSD" ] || [ "$unamestr" = "Darwin" ]; then
+    export $(grep -v '^#' $HOME/.env | xargs -0)
+  fi
+fi
+
+checkPath() {
+  test -e $1
+}
+
+addToPath() {
+  if [[ -d $1 && "$PATH" != *"$1"* ]]; then
+    path+=$1
+  fi
+}
+
+addToPathFront() {
+  if [[ -d $1 && "$PATH" != *"$1"* ]]; then
+    export PATH=$1:$PATH
+  fi
+}
+
+export NVM_DIR="$HOME/.nvm"
+if [[ -d $NVM_DIR ]]; then
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+export PNPM_HOME="$HOME/Library/pnpm"
+addToPath $PNPM_HOME
+addToPath "/Library/PostgreSQL/16/bin"
+addToPath "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+
+addToPathFront "$HOME/Library/Python/3.12/bin"
+addToPathFront "/opt/local/bin"
+addToPathFront "/opt/local/sbin"
+addToPathFront "$HOME/.local/bin"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# pipx
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"

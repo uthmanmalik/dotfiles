@@ -13,10 +13,6 @@ if [ -f "$HOME/.env" ]; then
   fi
 fi
 
-checkPath() {
-  test -e $1
-}
-
 addToPath() {
   if [[ -d $1 && "$PATH" != *"$1"* ]]; then
     path+=$1

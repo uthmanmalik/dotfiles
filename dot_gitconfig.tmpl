@@ -1,0 +1,43 @@
+[branch]
+	sort = -committerdate
+
+[column]
+	ui = auto
+
+[commit]
+	gpgsign = true
+
+[core]
+	excludefiles = ~/.gitignore
+	excludesfile = ~/.gitignore_global
+	fsmonitor = true
+	untrackedcache = true
+  editor = nvim
+
+[fetch]
+  prune = true
+
+[gpg]
+	format = ssh
+
+[init]
+  defaultBranch = main
+
+[maintenance]
+  auto = true
+
+[rerere]
+	enabled = true
+  autoupdate = true
+
+[status]
+  short = true
+
+[user]
+	name = {{ .gitname | quote }}
+	email = {{ .gitemail | quote }}
+	signingkey = ~/.ssh/git_sign.pub
+
+[alias]
+	staash = stash --all
+

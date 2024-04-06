@@ -5,8 +5,10 @@
 
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $name := promptStringOnce . "name" "Name" -}}
+{{- $username := promptStringOnce . "username" "Username" -}}
 
 [data]
   osid = {{ $osid | quote }}
   gitname = {{ $name | quote }}
   gitemail = {{ $email | quote }}
+  username = {{ $username | quote }}

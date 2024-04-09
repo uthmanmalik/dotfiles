@@ -110,6 +110,10 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 alias ninc="nvm install node --reinstall-packages-from=node"
 
+alias cze="chezmoi edit"
+alias cza="chezmoi apply"
+alias czc="chezmoi cd"
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 test -e "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme" && source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 eval "$(direnv hook zsh)"
